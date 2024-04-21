@@ -84,9 +84,9 @@ if(CONFIG_LV_I2C)
     list(APPEND SOURCES "lvgl_i2c/i2c_manager.c")
 endif()
 
-idf_component_register(SRCS ${SOURCES}
-                       INCLUDE_DIRS ${LVGL_INCLUDE_DIRS}
-                       REQUIRES lvgl)
+idf_component_register(SRCS ${SOURCES} "lvgl_tft/disp_spi.c"
+                       INCLUDE_DIRS ${LVGL_INCLUDE_DIRS} "."
+                       REQUIRES lvgl driver)
 
 target_compile_definitions(${COMPONENT_LIB} PUBLIC "-DLV_LVGL_H_INCLUDE_SIMPLE")
 
